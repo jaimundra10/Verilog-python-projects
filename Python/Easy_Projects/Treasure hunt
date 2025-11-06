@@ -1,1 +1,54 @@
+print(r'''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
+|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+****************************************************************************************
+
+
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.")
+
+side = input("You're at a fork in the jungle path. Do you go left or right? ").lower()
+
+if side == "left":
+    print("You walk cautiously through thick vines and reach a wide river.")
+    choice = input("Do you swim across or wait for a boat? (swim/wait) ").lower()
+    
+    if choice == "wait":
+        print("You wait patiently. A mysterious boat arrives and takes you safely across.")
+        print("You reach a cave with three glowing doors: one red, one blue, one yellow.")
+        door = input("Which door do you choose? (Red/Blue/Yellow) ").capitalize()
+        
+        if door == "Red":
+            print("You open the red door and flames burst out. You’re burned alive. Game Over.")
+        elif door == "Blue":
+            print("You enter the blue door and are devoured by beasts in the dark. Game Over.")
+        elif door == "Yellow":
+            print("You step into the yellow door. The room glows with gold and jewels. You found the treasure! You Win!")
+        else:
+            print("That door doesn’t exist. A trapdoor opens beneath you. Game Over.")
+    
+    else:
+        print("You dive into the river, but crocodiles surround you. You didn’t make it. Game Over.")
+
+else:
+    print("You take the right path and fall into a pit of spikes. Game Over.")
 
