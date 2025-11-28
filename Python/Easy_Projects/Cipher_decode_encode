@@ -1,0 +1,83 @@
+This Python script implements a Caesar Cipher — a simple substitution cipher where each letter in the message is shifted by a fixed number of positions in the alphabet.
+
+⚙️ How It Works
+The program imports and prints an ASCII art logo (art.logo).
+
+Defines the alphabet (a–z) as the valid characters for shifting.
+
+Implements a function ceaser(original_text, shift_amount, encode_or_decode):
+
+If the mode is "encode", letters are shifted forward.
+
+If the mode is "decode", the shift is reversed.
+
+Non‑alphabet characters (spaces, numbers, punctuation) are left unchanged.
+
+Wrap‑around is handled using modulo (% len(alphabet)).
+
+The program runs in a loop:
+
+Prompts the user to choose "encode" or "decode".
+
+Asks for a message and a shift number.
+
+Prints the encoded/decoded result.
+
+If the user chose "encode", it optionally asks whether to decrypt the same encrypted message and checks if the decrypted text matches the original.
+
+Asks if the user wants to run again; typing "no" ends the program.
+
+*****************************************CODE BELOW *****************************************************************************
+import art
+
+print(art.logo)
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
+
+
+def ceaser(original_text, shift_amount, encode_or_decode):
+    result = ""
+    if encode_or_decode == 'decode':
+        shift_amount *= -1   # ✅ only once, before loop
+
+    for char in original_text:
+        if char in alphabet:
+            shifted_position = alphabet.index(char) + shift_amount
+            shifted_position %= len(alphabet)
+            result += alphabet[shifted_position]
+        else:
+            result += char
+
+    print(f"Here is the {encode_or_decode}d result: {result}")
+    return result
+
+
+should_continue = True
+
+while should_continue:
+
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    if direction not in ("encode", "decode"):
+        print("please try again")
+        continue
+
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+
+    result =ceaser(original_text=text, shift_amount=shift, encode_or_decode=direction)
+
+    if direction == "encode":
+        decrypt_choice = input("Do you want to decrypt this encrypted message? (yes/no):\n").lower()
+        if decrypt_choice == "yes":
+            check = ceaser(original_text=result, shift_amount=shift, encode_or_decode="decode")
+            if check == text:
+                print(" Decryption successful: matches the original message")
+            else:
+                print(" Decryption failed: does not match")
+
+    restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
+    if restart == "no":
+        should_continue = False
+        print("Goodbye")
